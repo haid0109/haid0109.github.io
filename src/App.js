@@ -13,22 +13,16 @@ function App() {
       <div className="bmi-calculator">
         <h1 className="title">BMI Calculator</h1>
         <div className="male-and-female-container">
-          <div
-            className="container"
-            style={{'backgroundColor': gender === 'male' ? '#242931' : '#1a1e24'}}
-            onClick={() => setGender('male')}
-          >
-            <img src={marsIcon} className="gender-icon" alt="logo" />
-            <span>MALE</span>
-          </div>
-          <div
-            className="container"
-            style={{'backgroundColor': gender === 'female' ? '#242931' : '#1a1e24'}}
-            onClick={() => setGender('female')}
-          >
-            <img src={venusIcon} className="gender-icon" alt="logo" />
-            <span>FEMALE</span>
-          </div>
+          <GenderIconButton
+            gender="male"
+            genderState={{gender, setGender}}
+            icon={marsIcon}
+          />
+          <GenderIconButton
+            gender="female"
+            genderState={{gender, setGender}}
+            icon={venusIcon}
+          />
         </div>
         <div id="height" className="container">
           <span>HEIGHT</span>
@@ -65,6 +59,19 @@ function App() {
         </div>
         <button id="calculateButton" className="calculate-button">CALCULATE</button>
       </div>
+    </div>
+  );
+}
+
+function GenderIconButton(props) {
+  return (
+    <div
+    className="container"
+    style={{'backgroundColor': props.genderState.gender === props.gender ? '#242931' : '#1a1e24'}}
+    onClick={() => props.genderState.setGender(props.gender)}
+    >
+      <img src={props.icon} className="gender-icon" alt="logo" />
+      <span>{props.gender.toUpperCase()}</span>
     </div>
   );
 }
