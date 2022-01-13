@@ -58,7 +58,7 @@ function BMICalculator() {
         />
       </div>
       <Link
-        className="calculate-button"
+        className="bottom-page-button"
         to={{
           pathname: '/results',
           search: `?gender=${gender}&height=${height}&weight=${weight}&age=${age}`,

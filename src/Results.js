@@ -37,7 +37,7 @@ function Results() {
         <span className='text'>{text}</span>
       </div>
       <Link
-        className="calculate-button"
+        className="bottom-page-button"
         to={{
           pathname: '/',
         }}
