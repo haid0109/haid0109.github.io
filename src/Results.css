@@ -1,13 +1,13 @@
-.title {
+.results .title {
   font-size: 4em;
   margin-bottom: 0;
 }
 
-.bottom-page-button {
+.results .bottom-page-button {
   height: 10%;
 }
 
-.container {
+.results .container {
   justify-content: space-evenly;
 }
 

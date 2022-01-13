@@ -24,7 +24,7 @@ function Results() {
   }
 
   return (
-    <div className="bmi-calculator">
+    <div className="results bmi-calculator">
       <h1 className="title">Results</h1>
       <div className="container">
         <span
