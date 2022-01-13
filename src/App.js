@@ -3,18 +3,31 @@ import venusIcon from './gender-female.svg';
 import marsIcon from './gender-male.svg';
 import plusIcon from './plus.svg';
 import minusIcon from './minus.svg';
+import { useState } from 'react';
 
 function App() {
+  const [gender, setGender] = useState('male');
+
   return (
     <div className="App">
       <div className="bmi-calculator">
         <h1 className="title">BMI Calculator</h1>
         <div className="male-and-female-container">
-          <div id="male" className="container">
+          <div
+            id="male"
+            className="container"
+            style={{'backgroundColor': gender == 'male' ? '#242931' : '#1a1e24'}}
+            onClick={() => setGender('male')}
+          >
             <img src={marsIcon} className="gender-icon" alt="logo" />
             <span>MALE</span>
           </div>
-          <div id="female" className="container">
+          <div
+            id="female"
+            className="container"
+            style={{'backgroundColor': gender == 'female' ? '#242931' : '#1a1e24'}}
+            onClick={() => setGender('female')}
+          >
             <img src={venusIcon} className="gender-icon" alt="logo" />
             <span>FEMALE</span>
           </div>
