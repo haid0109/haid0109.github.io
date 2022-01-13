@@ -4,6 +4,7 @@ import marsIcon from './gender-male.svg';
 import plusIcon from './plus.svg';
 import minusIcon from './minus.svg';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function BMICalculator() {
   const [gender, setGender] = useState('male');
@@ -56,7 +57,15 @@ function BMICalculator() {
           }}
         />
       </div>
-      <button className="calculate-button">CALCULATE</button>
+      <Link
+        className="calculate-button"
+        to={{
+          pathname: '/results',
+          search: `?gender=${gender}&height=${height}&weight=${weight}&age=${age}`,
+        }}
+      >
+        CALCULATE
+      </Link>
     </div>
   );
 }
