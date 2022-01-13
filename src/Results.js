@@ -12,7 +12,7 @@ function Results() {
 
   if(bmi < 18.5) {
     status = 'UNDERWEIGHT';
-    text = 'Eat more'
+    text = 'Eat more chicken'
   }
   else if(bmi < 25) {
     status = 'NORMAL';
@@ -20,7 +20,7 @@ function Results() {
   }
   else {
     status = 'OVERWEIGHT';
-    text = 'Eat less';
+    text = 'Cut down on the McDonalds';
   }
 
   return (
