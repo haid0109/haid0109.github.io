@@ -93,10 +93,13 @@
 
 .calculate-button {
   height: 7%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.5em;
   font-weight: 600;
   color: white;
   background-color: #EB1555;
   border: none;
+  text-decoration: none;
 }
