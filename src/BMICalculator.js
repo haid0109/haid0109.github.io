@@ -3,7 +3,7 @@ import venusIcon from './gender-female.svg';
 import marsIcon from './gender-male.svg';
 import plusIcon from './plus.svg';
 import minusIcon from './minus.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function BMICalculator() {
@@ -11,6 +11,26 @@ function BMICalculator() {
   const [height, setHeight] = useState(170);
   const [weight, setWeight] = useState(80);
   const [age, setAge] = useState(21);
+
+  const saveStatsInSession = () => {
+    const stringifiedData = JSON.stringify({
+      gender,
+      height,
+      weight,
+      age,
+    });
+    sessionStorage.setItem('BMIData', stringifiedData);
+  }
+
+  useEffect(() => {
+    if(!sessionStorage.getItem('BMIData')) return;
+
+    const data = JSON.parse(sessionStorage.getItem('BMIData'));
+    setGender(data.gender);
+    setHeight(data.height);
+    setWeight(data.weight);
+    setAge(data.age);
+  }, []);
 
   return (
     <div className="bmi-calculator">
@@ -59,6 +79,7 @@ function BMICalculator() {
       </div>
       <Link
         className="bottom-page-button"
+        onClick={saveStatsInSession}
         to={{
           pathname: '/results',
           search: `?gender=${gender}&height=${height}&weight=${weight}&age=${age}`,
