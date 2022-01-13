@@ -27,7 +27,7 @@ function App() {
             icon={venusIcon}
           />
         </div>
-        <div id="height" className="container">
+        <div className="container">
           <span>HEIGHT</span>
           <span>
             <span className="stat-number">{height}</span>cm
@@ -42,7 +42,7 @@ function App() {
           />
         </div>
         <div className="weight-and-age-container">
-          <div id="weight" className="container">
+          <div className="container">
             <span>WEIGHT</span>
             <span className="stat-number">{weight}</span>
             <div>
@@ -54,7 +54,7 @@ function App() {
               </button>
             </div>
           </div>
-          <div id="age" className="container">
+          <div className="container">
             <span>AGE</span>
             <span className="stat-number">{age}</span>
             <div>
@@ -67,7 +67,7 @@ function App() {
             </div>
           </div>
         </div>
-        <button id="calculateButton" className="calculate-button">CALCULATE</button>
+        <button className="calculate-button">CALCULATE</button>
       </div>
     </div>
   );
