@@ -35,7 +35,7 @@ function App() {
           <span>
             <span className="stat-number">170</span>cm
           </span>
-          <input type="range" min="120" max="220" defaultValue="170" class="height-slider"/>
+          <input type="range" min="120" max="220" defaultValue="170" className="height-slider"/>
         </div>
         <div className="weight-and-age-container">
           <div id="weight" className="container">
