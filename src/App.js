@@ -9,6 +9,7 @@ function App() {
   const [gender, setGender] = useState('male');
   const [height, setHeight] = useState(170);
   const [weight, setWeight] = useState(80);
+  const [age, setAge] = useState(21);
 
   return (
     <div className="App">
@@ -55,12 +56,12 @@ function App() {
           </div>
           <div id="age" className="container">
             <span>AGE</span>
-            <span className="stat-number">28</span>
+            <span className="stat-number">{age}</span>
             <div>
-              <button className="rounded-icon-button">
+              <button className="rounded-icon-button" onClick={() => setAge(age - 1)}>
                 <img src={minusIcon} alt="logo" />
               </button>
-              <button className="rounded-icon-button">
+              <button className="rounded-icon-button" onClick={() => setAge(age + 1)}>
                 <img src={plusIcon} alt="logo" />
               </button>
             </div>
