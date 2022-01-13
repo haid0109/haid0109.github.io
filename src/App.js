@@ -42,30 +42,20 @@ function App() {
           />
         </div>
         <div className="weight-and-age-container">
-          <div className="container">
-            <span>WEIGHT</span>
-            <span className="stat-number">{weight}</span>
-            <div>
-              <button className="rounded-icon-button" onClick={() => setWeight(weight - 1)}>
-                <img src={minusIcon} alt="logo" />
-              </button>
-              <button className="rounded-icon-button" onClick={() => setWeight(weight + 1)}>
-                <img src={plusIcon} alt="logo" />
-              </button>
-            </div>
-          </div>
-          <div className="container">
-            <span>AGE</span>
-            <span className="stat-number">{age}</span>
-            <div>
-              <button className="rounded-icon-button" onClick={() => setAge(age - 1)}>
-                <img src={minusIcon} alt="logo" />
-              </button>
-              <button className="rounded-icon-button" onClick={() => setAge(age + 1)}>
-                <img src={plusIcon} alt="logo" />
-              </button>
-            </div>
-          </div>
+          <PlusMinusNumberContainer
+            label="WEIGHT"
+            state={{
+              value: weight,
+              setState: setWeight,
+            }}
+          />
+          <PlusMinusNumberContainer
+            label="AGE"
+            state={{
+              value: age,
+              setState: setAge,
+            }}
+          />
         </div>
         <button className="calculate-button">CALCULATE</button>
       </div>
@@ -82,6 +72,23 @@ function GenderIconButton(props) {
     >
       <img src={props.icon} className="gender-icon" alt="logo" />
       <span>{props.gender.toUpperCase()}</span>
+    </div>
+  );
+}
+
+function PlusMinusNumberContainer(props) {
+  return (
+    <div className="container">
+      <span>{props.label}</span>
+      <span className="stat-number">{props.state.value}</span>
+      <div>
+        <button className="rounded-icon-button" onClick={() => props.state.setState(props.state.value - 1)}>
+          <img src={minusIcon} alt="logo" />
+        </button>
+        <button className="rounded-icon-button" onClick={() => props.state.setState(props.state.value + 1)}>
+          <img src={plusIcon} alt="logo" />
+        </button>
+      </div>
     </div>
   );
 }
