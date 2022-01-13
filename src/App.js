@@ -8,6 +8,7 @@ import { useState } from 'react';
 function App() {
   const [gender, setGender] = useState('male');
   const [height, setHeight] = useState(170);
+  const [weight, setWeight] = useState(80);
 
   return (
     <div className="App">
@@ -42,12 +43,12 @@ function App() {
         <div className="weight-and-age-container">
           <div id="weight" className="container">
             <span>WEIGHT</span>
-            <span className="stat-number">60</span>
+            <span className="stat-number">{weight}</span>
             <div>
-              <button className="rounded-icon-button">
+              <button className="rounded-icon-button" onClick={() => setWeight(weight - 1)}>
                 <img src={minusIcon} alt="logo" />
               </button>
-              <button className="rounded-icon-button">
+              <button className="rounded-icon-button" onClick={() => setWeight(weight + 1)}>
                 <img src={plusIcon} alt="logo" />
               </button>
             </div>
