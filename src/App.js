@@ -15,7 +15,7 @@ function App() {
         <div className="male-and-female-container">
           <div
             className="container"
-            style={{'backgroundColor': gender == 'male' ? '#242931' : '#1a1e24'}}
+            style={{'backgroundColor': gender === 'male' ? '#242931' : '#1a1e24'}}
             onClick={() => setGender('male')}
           >
             <img src={marsIcon} className="gender-icon" alt="logo" />
@@ -23,7 +23,7 @@ function App() {
           </div>
           <div
             className="container"
-            style={{'backgroundColor': gender == 'female' ? '#242931' : '#1a1e24'}}
+            style={{'backgroundColor': gender === 'female' ? '#242931' : '#1a1e24'}}
             onClick={() => setGender('female')}
           >
             <img src={venusIcon} className="gender-icon" alt="logo" />
