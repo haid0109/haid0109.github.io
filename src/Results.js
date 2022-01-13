@@ -1,3 +1,5 @@
+import './BMICalculator.css';
+import './Results.css';
 import { useSearchParams, Link } from 'react-router-dom';
 
 function Results() {

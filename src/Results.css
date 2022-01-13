@@ -1,0 +1,28 @@
+.title {
+  font-size: 4em;
+  margin-bottom: 0;
+}
+
+.calculate-button {
+  height: 10%;
+}
+
+.container {
+  justify-content: space-evenly;
+}
+
+.status-text {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.bmi {
+  color: white;
+  font-size: 5em;
+  font-weight: 600;
+}
+
+.text {
+  color: white;
+  font-size: 1.2em;
+}
