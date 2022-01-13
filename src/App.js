@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 function App() {
   const [gender, setGender] = useState('male');
+  const [height, setHeight] = useState(170);
 
   return (
     <div className="App">
@@ -27,9 +28,16 @@ function App() {
         <div id="height" className="container">
           <span>HEIGHT</span>
           <span>
-            <span className="stat-number">170</span>cm
+            <span className="stat-number">{height}</span>cm
           </span>
-          <input type="range" min="120" max="220" defaultValue="170" className="height-slider"/>
+          <input
+            type="range"
+            min="120"
+            max="220"
+            className="height-slider"
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
+          />
         </div>
         <div className="weight-and-age-container">
           <div id="weight" className="container">
