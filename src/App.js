@@ -14,7 +14,6 @@ function App() {
         <h1 className="title">BMI Calculator</h1>
         <div className="male-and-female-container">
           <div
-            id="male"
             className="container"
             style={{'backgroundColor': gender == 'male' ? '#242931' : '#1a1e24'}}
             onClick={() => setGender('male')}
@@ -23,7 +22,6 @@ function App() {
             <span>MALE</span>
           </div>
           <div
-            id="female"
             className="container"
             style={{'backgroundColor': gender == 'female' ? '#242931' : '#1a1e24'}}
             onClick={() => setGender('female')}
