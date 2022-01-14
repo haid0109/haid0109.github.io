@@ -1,9 +1,9 @@
-import './BMICalculator.css';
-import venusIcon from './gender-female.svg';
-import marsIcon from './gender-male.svg';
-import plusIcon from './plus.svg';
-import minusIcon from './minus.svg';
+import '../styles/BMICalculator.css';
+import venusIcon from '../images/gender-female.svg';
+import marsIcon from '../images/gender-male.svg';
 import { useState, useEffect } from 'react';
+import GenderIconButton from '../components/GenderIconButton';
+import PlusMinusNumberContainer from '../components/PlusMinusNumberContainer'
 
 function BMICalculator() {
   const [gender, setGender] = useState('male');
@@ -93,36 +93,6 @@ function BMICalculator() {
         >
           {status}
         </span>
-      </div>
-    </div>
-  );
-}
-
-function GenderIconButton(props) {
-  return (
-    <div
-    className="container"
-    style={{'backgroundColor': props.genderState.gender === props.gender ? '#242931' : '#1a1e24'}}
-    onClick={() => props.genderState.setGender(props.gender)}
-    >
-      <img src={props.icon} className="gender-icon" alt="logo" />
-      <span>{props.gender.toUpperCase()}</span>
-    </div>
-  );
-}
-
-function PlusMinusNumberContainer(props) {
-  return (
-    <div className="container">
-      <span>{props.label}</span>
-      <span className="stat-number">{props.state.value}</span>
-      <div>
-        <button className="rounded-icon-button" onClick={() => props.state.setState(props.state.value - 1)}>
-          <img src={minusIcon} alt="logo" />
-        </button>
-        <button className="rounded-icon-button" onClick={() => props.state.setState(props.state.value + 1)}>
-          <img src={plusIcon} alt="logo" />
-        </button>
       </div>
     </div>
   );
