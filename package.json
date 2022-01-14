@@ -1,6 +1,6 @@
 {
   "name": "react-test-project",
-  "homepage": "https://haid0109.github.io/react-bmi-calculator-demo/",
+  "homepage": "https://react-bmi-calculator-demo.herokuapp.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
