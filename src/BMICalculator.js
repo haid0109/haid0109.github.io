@@ -4,23 +4,18 @@ import marsIcon from './gender-male.svg';
 import plusIcon from './plus.svg';
 import minusIcon from './minus.svg';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 function BMICalculator() {
   const [gender, setGender] = useState('male');
   const [height, setHeight] = useState(170);
   const [weight, setWeight] = useState(80);
   const [age, setAge] = useState(21);
+  const bmi =  parseFloat((weight / Math.pow(height / 100, 2)).toFixed(2));
+  let status;
 
-  const saveStatsInSession = () => {
-    const stringifiedData = JSON.stringify({
-      gender,
-      height,
-      weight,
-      age,
-    });
-    sessionStorage.setItem('BMIData', stringifiedData);
-  }
+  if(bmi < 18.5) status = 'UNDERWEIGHT';
+  else if(bmi < 25) status = 'NORMAL';
+  else status = 'OVERWEIGHT';
 
   useEffect(() => {
     if(!sessionStorage.getItem('BMIData')) return;
@@ -31,6 +26,16 @@ function BMICalculator() {
     setWeight(data.weight);
     setAge(data.age);
   }, []);
+
+  useEffect(() => {
+    const stringifiedData = JSON.stringify({
+      gender,
+      height,
+      weight,
+      age,
+    });
+    sessionStorage.setItem('BMIData', stringifiedData);
+  });
 
   return (
     <div className="bmi-calculator">
@@ -77,16 +82,18 @@ function BMICalculator() {
           }}
         />
       </div>
-      <Link
-        className="bottom-page-button"
-        onClick={saveStatsInSession}
-        to={{
-          pathname: '/results',
-          search: `?gender=${gender}&height=${height}&weight=${weight}&age=${age}`,
-        }}
-      >
-        CALCULATE
-      </Link>
+      <div className="container">
+        <span>BMI</span>
+        <span>
+          <span className="stat-number">{bmi}</span>
+        </span>
+        <span
+          className='status-text'
+          style={{'color': status === 'NORMAL' ? 'green' : 'red'}}
+        >
+          {status}
+        </span>
+      </div>
     </div>
   );
 }

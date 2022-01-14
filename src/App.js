@@ -8,7 +8,6 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<BMICalculator />}/>
-        <Route path="/results" element={<Results />}/>
       </Routes>
     </div>
   );
