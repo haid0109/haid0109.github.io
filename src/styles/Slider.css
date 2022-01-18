@@ -1,0 +1,22 @@
+.slider {
+  -webkit-appearance: none;
+  width: 90%;
+  height: 3px;
+  margin: 2em;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  background-color: #EB1555;
+}
+
+.slider::-moz-range-thumb {
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  background-color: #EB1555;
+}

@@ -46,7 +46,7 @@ function BMICalculator() {
           icon={venusIcon}
         />
       </div>
-      <Container>
+      <div className='container'>
         <Label>HEIGHT</Label>
         <Label>
           <StatNumber>{height}</StatNumber>cm
@@ -57,7 +57,7 @@ function BMICalculator() {
           value={height}
           changeHeight={height => setHeight(height)}
         />
-      </Container>
+      </div>
       <div className="weight-and-age-picker-container">
         <PlusMinusNumberContainer
           label="WEIGHT"
