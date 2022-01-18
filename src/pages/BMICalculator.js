@@ -4,6 +4,10 @@ import marsIcon from '../images/gender-male.svg';
 import { useState, useEffect } from 'react';
 import GenderIconButton from '../components/GenderIconButton';
 import PlusMinusNumberContainer from '../components/PlusMinusNumberContainer'
+import Container from '../components/Container';
+import Slider from '../components/Slider';
+import Label from '../components/Label';
+import StatNumber from '../components/StatNumber';
 
 function BMICalculator() {
   const [gender, setGender] = useState('male');
@@ -11,91 +15,95 @@ function BMICalculator() {
   const [weight, setWeight] = useState(80);
   const [age, setAge] = useState(21);
   const bmi =  parseFloat((weight / Math.pow(height / 100, 2)).toFixed(2));
-  let status;
-
-  if(bmi < 18.5) status = 'UNDERWEIGHT';
-  else if(bmi < 25) status = 'NORMAL';
-  else status = 'OVERWEIGHT';
+  const bmiCategory = setBmiCategory(bmi);
 
   useEffect(() => {
-    if(!sessionStorage.getItem('BMIData')) return;
-
-    const data = JSON.parse(sessionStorage.getItem('BMIData'));
-    setGender(data.gender);
-    setHeight(data.height);
-    setWeight(data.weight);
-    setAge(data.age);
+    const bmiData = getBmiDataFromSession();
+    setGender(bmiData.gender);
+    setHeight(bmiData.height);
+    setWeight(bmiData.weight);
+    setAge(bmiData.age);
   }, []);
 
   useEffect(() => {
-    const stringifiedData = JSON.stringify({
-      gender,
-      height,
-      weight,
-      age,
-    });
-    sessionStorage.setItem('BMIData', stringifiedData);
+    saveBmiDataInSession(gender, height, weight, age);
   });
 
   return (
     <div className="bmi-calculator">
       <h1 className="title">BMI Calculator</h1>
-      <div className="male-and-female-container">
+      <div className="male-and-female-picker-container">
         <GenderIconButton
           gender="male"
-          genderState={{gender, setGender}}
+          currentGender={gender}
+          changeGender={gender => setGender(gender)}
           icon={marsIcon}
         />
         <GenderIconButton
           gender="female"
-          genderState={{gender, setGender}}
+          currentGender={gender}
+          changeGender={gender => setGender(gender)}
           icon={venusIcon}
         />
       </div>
-      <div className="container">
-        <span>HEIGHT</span>
-        <span>
-          <span className="stat-number">{height}</span>cm
-        </span>
-        <input
-          type="range"
+      <Container>
+        <Label>HEIGHT</Label>
+        <Label>
+          <StatNumber>{height}</StatNumber>cm
+        </Label>
+        <Slider
           min="120"
           max="220"
-          className="height-slider"
           value={height}
-          onChange={(e) => setHeight(e.target.value)}
+          changeHeight={height => setHeight(height)}
         />
-      </div>
-      <div className="weight-and-age-container">
+      </Container>
+      <div className="weight-and-age-picker-container">
         <PlusMinusNumberContainer
           label="WEIGHT"
-          state={{
-            value: weight,
-            setState: setWeight,
-          }}
+          value={weight}
+          changeValue={weight => setWeight(weight)}
         />
         <PlusMinusNumberContainer
           label="AGE"
-          state={{
-            value: age,
-            setState: setAge,
-          }}
+          value={age}
+          changeValue={age => setAge(age)}
         />
       </div>
-      <div className="container">
-        <span>BMI</span>
-        <span>
-          <span className="stat-number">{bmi}</span>
-        </span>
+      <Container>
+        <Label>BMI</Label>
+        <StatNumber>{bmi}</StatNumber>
         <span
           className='status-text'
-          style={{'color': status === 'NORMAL' ? 'green' : 'red'}}
+          style={{'color': bmiCategory === 'NORMAL' ? 'green' : 'red'}}
         >
-          {status}
+          {bmiCategory}
         </span>
-      </div>
+      </Container>
     </div>
   );
 }
 
 export default BMICalculator;
+
+function setBmiCategory(bmi) {
+  if(bmi < 18.5) return 'UNDERWEIGHT';
+  else if(bmi < 25) return 'NORMAL';
+  else return 'OVERWEIGHT';
+}
+
+function getBmiDataFromSession() {
+  if(!sessionStorage.getItem('BMIData')) return;
+
+  return JSON.parse(sessionStorage.getItem('BMIData'));
+}
+
+function saveBmiDataInSession(gender, height, weight, age) {
+  const stringifiedData = JSON.stringify({
+    gender,
+    height,
+    weight,
+    age,
+  });
+  sessionStorage.setItem('BMIData', stringifiedData);
+}
